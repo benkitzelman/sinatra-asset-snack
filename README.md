@@ -41,5 +41,5 @@ If you want - use the helpers to add cache busting
 ```
 
 [sinatra]: http://sinatrarb.com
-[coffee-script]: XXXXXXX
-[sass]: XXXXXXX
+[coffee-script]: http://github.com/josh/ruby-coffee-script
+[sass]: http://sass-lang.com/

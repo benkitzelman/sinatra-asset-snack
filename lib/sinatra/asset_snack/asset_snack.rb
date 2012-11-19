@@ -6,6 +6,7 @@ module Sinatra
       def registered(app)
         app.extend ClassMethods
         app.send(:include, InstanceMethods)
+        app.send(:helpers, Helpers)
       end
 
       def register_compiler(compiler, handled_extensions)
