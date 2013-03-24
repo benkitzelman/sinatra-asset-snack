@@ -21,8 +21,11 @@ module Sinatra
         def mime_type(type)
           @compiled_mime_type = type
         end
+      end
 
+      def compile
+        throw "Not Implemented"
       end
     end
   end #Asset
-end #GreyNomad
+end #Sinatra
