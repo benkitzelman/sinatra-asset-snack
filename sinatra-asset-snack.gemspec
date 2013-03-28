@@ -1,4 +1,4 @@
-require './lib/sinatra/asset_snack'
+require './lib/sinatra/asset_snack/version'
 Gem::Specification.new do |s|
   s.name        = 'sinatra-asset-snack'
   s.version     = Sinatra::AssetSnack.version
@@ -13,4 +13,10 @@ Gem::Specification.new do |s|
   s.add_dependency 'sinatra'
   s.add_dependency 'coffee-script'
   s.add_dependency 'sass'
+
+  s.add_development_dependency "minitest"
+  s.add_development_dependency "minitest-reporters"
+  s.add_development_dependency "mocha"
+  s.add_development_dependency "rake"
+  s.add_development_dependency "rack-test"
 end

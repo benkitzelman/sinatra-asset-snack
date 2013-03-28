@@ -3,7 +3,10 @@ module Sinatra
     module Helpers
 
       def nocache(url)
-        "#{url}?cb=#{Time.now.to_i}"
+        uri    = URI.parse(url)
+        params = Rack::Utils.parse_query(uri.query).merge(cb: Time.now.to_i)
+        uri.query = Rack::Utils.build_query params
+        uri.to_s
       end
 
     end # Helpers
