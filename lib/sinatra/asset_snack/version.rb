@@ -1,7 +1,7 @@
 module Sinatra
   module AssetSnack
     def self.version
-      '0.0.1'
+      '0.1.0'
     end
-  end
-end
+  end # AssetSnack
+end # Sinatra
