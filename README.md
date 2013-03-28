@@ -4,6 +4,8 @@ A lean asset compiler for Sinatra developed specifically for Coffeescript and SA
 It stitches all assets for a route into a single file, no uglification, no minification (configure your server to use Gzip),
 just lean, fast compilation.
 
+[![Build Status](https://travis-ci.org/benkitzelman/sinatra-asset-snack.png?branch=master)](https://travis-ci.org/benkitzelman/sinatra-asset-snack)
+
 ## Installation
 ### Bundler users
 
