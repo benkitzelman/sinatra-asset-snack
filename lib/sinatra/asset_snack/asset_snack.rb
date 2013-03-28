@@ -54,6 +54,5 @@ module Sinatra
         paths.reduce([]) { |file_list, path| file_list + Dir.glob(path) }.uniq
       end
     end #InstanceMethods
-
   end # AssetSnack
 end #Sinatra
