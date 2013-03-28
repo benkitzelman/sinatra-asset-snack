@@ -5,6 +5,7 @@ It stitches all assets for a route into a single file, no uglification, no minif
 just lean, fast compilation.
 
 [![Build Status](https://travis-ci.org/benkitzelman/sinatra-asset-snack.png?branch=master)](https://travis-ci.org/benkitzelman/sinatra-asset-snack)
+[![Gem Version](https://badge.fury.io/rb/sinatra-asset-snack.png)](http://badge.fury.io/rb/sinatra-asset-snack)
 
 ## Installation
 ### Bundler users
