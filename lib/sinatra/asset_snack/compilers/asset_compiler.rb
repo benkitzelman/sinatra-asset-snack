@@ -17,12 +17,17 @@ module Sinatra
             end
           end
 
+          def ext_for(file_path)
+            return if file_path.nil?
+            File.extname(file_path).downcase[1..-1]
+          end
+
           def compile_file(file_path)
-            ext = File.extname(file_path).downcase[1..-1]
+            ext = ext_for file_path
             return unless ext && handled_extensions.include?(ext.to_sym)
 
             file_content = File.read file_path
-            new.compile(file_content)
+            new.compile(file_content, file_path)
           end
 
           def handle_extensions(*extensions)
@@ -35,7 +40,7 @@ module Sinatra
           end
         end
 
-        def compile
+        def compile(script, file_path = nil)
           throw "Not Implemented"
         end
       end

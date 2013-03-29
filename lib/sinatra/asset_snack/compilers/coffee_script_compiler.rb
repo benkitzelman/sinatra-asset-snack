@@ -5,7 +5,7 @@ module Sinatra
         handle_extensions :coffee
         mime_type 'text/js'
 
-        def compile(coffee_script)
+        def compile(coffee_script, file_path = nil)
           CoffeeScript.compile(coffee_script, self.class.configuration)
         end
       end
