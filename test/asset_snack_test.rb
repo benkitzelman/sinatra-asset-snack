@@ -26,7 +26,6 @@ module Sinatra
       end
 
       get '/javascript/application.js'
-      puts last_response.body
       last_response.body.wont_include ').call(this);'
     end
   end
