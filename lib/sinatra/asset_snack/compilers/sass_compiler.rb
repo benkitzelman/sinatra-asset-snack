@@ -2,7 +2,7 @@ module Sinatra
   module AssetSnack
     module Compilers
       class SassCompiler < AssetCompiler
-        handle_extensions :scss
+        handle_extensions :scss, :sass
         mime_type 'text/css'
 
         def compile(sass_script)

@@ -34,6 +34,10 @@ EOS
       subject.class.handled_extensions.must_include :scss
     end
 
+    it 'should handle files with extension scss' do
+      subject.class.handled_extensions.must_include :sass
+    end
+
     it 'should compile to text/css' do
       subject.class.compiled_mime_type.must_equal 'text/css'
     end

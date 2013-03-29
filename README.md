@@ -43,6 +43,19 @@ If you want - use the helpers to add cache busting
 <script src="<%= nocache '/javascript/application.js' %>" type="text/javascript"></script>
 ```
 
+## Configuring
+
+Configuration options may be passed into each compiler. For example
+
+``` ruby
+Sinatra::AssetSnack.configure do |config|
+  config.compilers[:coffee_script] = {bare: true}
+  config.compilers[:sass] = {syntax: :scss}
+end
+```
+
+See each compiler's repo for the list of configuration options
+
 [sinatra]: http://sinatrarb.com
 [coffee-script]: http://github.com/josh/ruby-coffee-script
 [sass]: http://sass-lang.com/
