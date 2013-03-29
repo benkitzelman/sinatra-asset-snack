@@ -9,6 +9,9 @@ require './lib/sinatra/asset_snack'
 MiniTest::Reporters.use! MiniTest::Reporters::SpecReporter.new
 
 class App < Sinatra::Base
+  Sinatra::AssetSnack.configure do |config|
+    config.compilers[:coffee_script] = {bare: true}
+  end
   register Sinatra::AssetSnack
   asset_map '/javascript/application.js', ['test/fixtures/**/*.coffee']
   asset_map '/stylesheets/application.css', ['test/fixtures/**/*.scss']

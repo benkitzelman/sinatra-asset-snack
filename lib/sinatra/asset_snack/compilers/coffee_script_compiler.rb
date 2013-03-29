@@ -6,7 +6,7 @@ module Sinatra
         mime_type 'text/js'
 
         def compile(coffee_script)
-          CoffeeScript.compile(coffee_script, {bare: true})
+          CoffeeScript.compile(coffee_script, self.class.configuration)
         end
       end
     end # Compilers

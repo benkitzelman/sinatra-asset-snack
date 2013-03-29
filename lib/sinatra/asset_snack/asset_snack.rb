@@ -1,12 +1,16 @@
 module Sinatra
   module AssetSnack
     class << self
-      attr_reader :compilers
+      attr_reader :compilers, :configuration
 
       def registered(app)
         app.extend ClassMethods
         app.send(:include, InstanceMethods)
         app.send(:helpers, Helpers)
+      end
+
+      def configure(&block)
+        @configuration = Configuration.new(&block)
       end
 
       def register_compiler(compiler, handled_extensions)
@@ -18,7 +22,7 @@ module Sinatra
 
       def compiler_for(file_path)
         ext = (File.extname(file_path) || '.').downcase[1..-1]
-        @compilers[ext.to_sym] unless ext.nil?
+        @compilers[ext.to_sym]
       end
     end # self
 

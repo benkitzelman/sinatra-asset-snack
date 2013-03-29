@@ -19,5 +19,15 @@ module Sinatra
       get '/javascript/application.js'
       last_response.headers['Content-Type'].must_equal 'text/js'
     end
+
+    it 'should allow compiler configuration' do
+      Sinatra::AssetSnack.configure do |config|
+        config.compilers[:coffee_script] = {bare: true}
+      end
+
+      get '/javascript/application.js'
+      puts last_response.body
+      last_response.body.wont_include ').call(this);'
+    end
   end
 end

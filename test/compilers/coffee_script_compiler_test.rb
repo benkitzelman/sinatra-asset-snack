@@ -8,12 +8,21 @@ module Sinatra
     let(:compiled)  {
   <<-EOS
 (function() {
-  var x;
+  (function() {
+    var x;
 
-  return x = "test";
-});
+    return x = "test";
+  });
+
+}).call(this);
   EOS
     }
+
+    before(:all) do
+      Sinatra::AssetSnack.configure do |config|
+        config.compilers[:coffee_script] = {}
+      end
+    end
 
     it 'must compile a coffeesript file' do
       subject.class.compile_file(file_path).must_equal compiled
