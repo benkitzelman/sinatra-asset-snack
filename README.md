@@ -1,11 +1,11 @@
 # AssetSnack for Sinatra
 
+[![Build Status](https://travis-ci.org/benkitzelman/sinatra-asset-snack.png?branch=master)](https://travis-ci.org/benkitzelman/sinatra-asset-snack)
+[![Gem Version](https://badge.fury.io/rb/sinatra-asset-snack.png)](http://badge.fury.io/rb/sinatra-asset-snack)
+
 A lean asset compiler for Sinatra developed specifically for Coffeescript and SASS. 
 It stitches all assets for a route into a single file, no uglification, no minification (configure your server to use Gzip),
 just lean, fast compilation.
-
-[![Build Status](https://travis-ci.org/benkitzelman/sinatra-asset-snack.png?branch=master)](https://travis-ci.org/benkitzelman/sinatra-asset-snack)
-[![Gem Version](https://badge.fury.io/rb/sinatra-asset-snack.png)](http://badge.fury.io/rb/sinatra-asset-snack)
 
 ## Installation
 ### Bundler users
@@ -16,10 +16,9 @@ If you use Bundler, add it to your *Gemfile.*
 gem install sinatra-asset-snack
 ```
 
-
 ## Setup
 
-Install the plugin configure your routes.
+Require and register the gem then configure your routes.
 
 ``` ruby
 require 'sinatra/asset_snack'
@@ -53,6 +52,7 @@ Sinatra::AssetSnack.configuration.compilers[:sass] = {syntax: :scss}
 ```
 
 See each compiler's repo for the list of configuration options
+
 
 [sinatra](http://sinatrarb.com)
 
