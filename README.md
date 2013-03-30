@@ -55,5 +55,7 @@ Sinatra::AssetSnack.configuration.compilers[:sass] = {syntax: :scss}
 See each compiler's repo for the list of configuration options
 
 [sinatra](http://sinatrarb.com)
+
 [coffee-script](http://github.com/josh/ruby-coffee-script)
+
 [sass](http://sass-lang.com/)
