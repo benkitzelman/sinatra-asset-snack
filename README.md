@@ -48,14 +48,12 @@ If you want - use the helpers to add cache busting
 Configuration options may be passed into each compiler. For example
 
 ``` ruby
-Sinatra::AssetSnack.configure do |config|
-  config.compilers[:coffee_script] = {bare: true}
-  config.compilers[:sass] = {syntax: :scss}
-end
+Sinatra::AssetSnack.configuration.compilers[:coffee_script] = {bare: true}
+Sinatra::AssetSnack.configuration.compilers[:sass] = {syntax: :scss}
 ```
 
 See each compiler's repo for the list of configuration options
 
-[sinatra]: http://sinatrarb.com
-[coffee-script]: http://github.com/josh/ruby-coffee-script
-[sass]: http://sass-lang.com/
+[sinatra](http://sinatrarb.com)
+[coffee-script](http://github.com/josh/ruby-coffee-script)
+[sass](http://sass-lang.com/)
