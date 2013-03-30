@@ -3,14 +3,12 @@ module Sinatra
     class << self
       attr_reader :compilers, :configuration
 
-      def registered(app)
+      def registered(app, &block)
+        @configuration = Configuration.new
+
         app.extend ClassMethods
         app.send(:include, InstanceMethods)
         app.send(:helpers, Helpers)
-      end
-
-      def configure(&block)
-        @configuration = Configuration.new(&block)
       end
 
       def register_compiler(compiler, handled_extensions)
@@ -24,10 +22,16 @@ module Sinatra
         ext = (File.extname(file_path) || '.').downcase[1..-1]
         @compilers[ext.to_sym]
       end
+
+      def assets
+        @assets ||= []
+      end
     end # self
 
     module ClassMethods
       def asset_map(route, paths)
+        AssetSnack.assets << {route: route, paths: paths}
+
         self.get route do
           content = compile paths
           [200, {'Content-Type' => content[:mime_type]}, content[:body]]
@@ -37,7 +41,7 @@ module Sinatra
 
     module InstanceMethods
       def compile(paths)
-        expand(paths).reduce({body: ''}) do |content, path|
+        expand(paths).reduce({body: '', mime_type: 'text/plain'}) do |content, path|
           next unless File.exists?(path)
 
           if compiler = AssetSnack.compiler_for(path)
@@ -48,7 +52,7 @@ module Sinatra
           end
 
           {
-            mime_type: content_type || content[:mime_type] || 'text/plain',
+            mime_type: content_type || content[:mime_type],
             body: content[:body] + "\n\n/** #{File.basename path} **/\n\n" + compiled
           }
         end
@@ -57,6 +61,6 @@ module Sinatra
       def expand(paths)
         paths.reduce([]) { |file_list, path| file_list + Dir.glob(path) }.uniq
       end
-    end #InstanceMethods
+    end # InstanceMethods
   end # AssetSnack
-end #Sinatra
+end # Sinatra

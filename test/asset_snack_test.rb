@@ -21,12 +21,18 @@ module Sinatra
     end
 
     it 'should allow compiler configuration' do
-      Sinatra::AssetSnack.configure do |config|
-        config.compilers[:coffee_script] = {bare: true}
-      end
+      Sinatra::AssetSnack.configuration.compilers[:coffee_script] = {bare: true}
 
       get '/javascript/application.js'
       last_response.body.wont_include ').call(this);'
+    end
+
+    it 'should remember each mapped asset' do
+      js_assets  = {route: '/javascript/application.js',   paths: ['test/fixtures/**/*.coffee']}
+      css_assets = {route: '/stylesheets/application.css', paths: ['test/fixtures/**/*.scss']}
+
+      Sinatra::AssetSnack.assets.must_include js_assets
+      Sinatra::AssetSnack.assets.must_include css_assets
     end
   end
 end

@@ -19,9 +19,7 @@ module Sinatra
     }
 
     before(:all) do
-      Sinatra::AssetSnack.configure do |config|
-        config.compilers[:coffee_script] = {}
-      end
+      Sinatra::AssetSnack.configuration.compilers[:coffee_script] = {}
     end
 
     it 'must compile a coffeesript file' do
