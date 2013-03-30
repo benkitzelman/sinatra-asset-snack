@@ -3,6 +3,7 @@ PATH
   specs:
     sinatra-asset-snack (0.1.4)
       coffee-script
+      mime-types
       sass
       sinatra
 
@@ -19,6 +20,7 @@ GEM
       multi_json (~> 1.0)
     hashie (2.0.3)
     metaclass (0.0.1)
+    mime-types (1.21)
     minitest (4.7.0)
     minitest-reporters (0.14.11)
       ansi

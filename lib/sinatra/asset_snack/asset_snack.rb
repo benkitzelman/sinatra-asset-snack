@@ -48,7 +48,8 @@ module Sinatra
             compiled = compiler.compile_file(path)
             content_type = compiler.compiled_mime_type
           else
-            compiled = File.read(path)
+            compiled = File.read path
+            content_type = MIME::Types.type_for(path).first.to_s
           end
 
           {

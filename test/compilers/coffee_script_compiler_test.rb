@@ -36,7 +36,7 @@ module Sinatra
     end
 
     it 'should compile to text/js' do
-      subject.class.compiled_mime_type.must_equal 'text/js'
+      subject.class.compiled_mime_type.must_equal 'application/javascript'
     end
 
     it 'should register itself with the AssetCompiler' do

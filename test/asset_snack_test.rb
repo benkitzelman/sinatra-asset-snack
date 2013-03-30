@@ -17,7 +17,12 @@ module Sinatra
 
     it 'should return the compilers mime type as a header' do
       get '/javascript/application.js'
-      last_response.headers['Content-Type'].must_equal 'text/js'
+      last_response.headers['Content-Type'].must_equal 'application/javascript'
+    end
+
+    it 'should return file mime_type for uncompiled assets' do
+      get '/javascript/application_js_only.js'
+      last_response.headers['Content-Type'].must_equal 'application/javascript'
     end
 
     it 'should allow compiler configuration' do

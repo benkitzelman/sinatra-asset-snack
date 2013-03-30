@@ -1,3 +1,4 @@
+require 'mime/types'
 require 'sass'
 require 'coffee-script'
 

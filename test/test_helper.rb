@@ -12,5 +12,6 @@ class App < Sinatra::Base
   register Sinatra::AssetSnack
 
   asset_map '/javascript/application.js', ['test/fixtures/**/*.coffee']
+  asset_map '/javascript/application_js_only.js', ['test/fixtures/**/*.js']
   asset_map '/stylesheets/application.css', ['test/fixtures/**/*.scss']
 end
