@@ -60,7 +60,9 @@ module Sinatra
       end
 
       def expand(paths)
-        paths.reduce([]) { |file_list, path| file_list + Dir.glob(path) }.uniq
+        paths.reduce([]) do |file_list, path|
+          file_list += File.file?(path) ? [path] : Dir.glob(path)
+        end.uniq
       end
     end # InstanceMethods
   end # AssetSnack

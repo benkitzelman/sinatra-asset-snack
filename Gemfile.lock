@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sinatra-asset-snack (0.1.4)
+    sinatra-asset-snack (0.1.5)
       coffee-script
       mime-types
       sass
