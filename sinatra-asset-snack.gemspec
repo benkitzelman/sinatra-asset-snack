@@ -13,7 +13,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'sinatra'
   s.add_dependency 'coffee-script'
   s.add_dependency 'sass'
-  s.add_dependency 'yajl'
   s.add_dependency 'mime-types'
 
   s.add_development_dependency "minitest"
