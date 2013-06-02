@@ -1,6 +1,6 @@
 ENV['RACK_ENV'] = 'test'
-require 'minitest/spec'
 require 'minitest/autorun'
+require 'minitest/spec'
 require "minitest/reporters"
 require "mocha/setup"
 require 'rack/test'
