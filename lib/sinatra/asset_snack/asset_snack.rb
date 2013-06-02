@@ -13,14 +13,12 @@ module Sinatra
 
       def register_compiler(compiler, handled_extensions)
         @compilers ||= {}
-        handled_extensions.each do |ext|
-          @compilers[ext.downcase.to_sym] = compiler
-        end
+        handled_extensions.each { |ext| @compilers[ext.downcase.to_sym] = compiler }
       end
 
       def compiler_for(file_path)
         ext = (File.extname(file_path) || '.').downcase[1..-1]
-        @compilers[ext.to_sym]
+        @compilers[ext.to_sym] || Compilers::AssetCompiler
       end
 
       def assets
@@ -44,13 +42,9 @@ module Sinatra
         expand(paths).reduce({body: '', mime_type: 'text/plain'}) do |content, path|
           next unless File.exists?(path)
 
-          if compiler = AssetSnack.compiler_for(path)
-            compiled = compiler.compile_file(path)
-            content_type = compiler.compiled_mime_type
-          else
-            compiled = File.read path
-            content_type = MIME::Types.type_for(path).first.to_s
-          end
+          compiler = AssetSnack.compiler_for(path)
+          compiled = compiler.compile_file(path)
+          content_type = compiler.compiled_mime_type || MIME::Types.type_for(path).first.to_s
 
           {
             mime_type: content_type || content[:mime_type],

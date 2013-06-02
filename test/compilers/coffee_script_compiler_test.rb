@@ -18,7 +18,7 @@ module Sinatra
   EOS
     }
 
-    before(:all) do
+    before do
       Sinatra::AssetSnack.configuration.compilers[:coffee_script] = {}
     end
 

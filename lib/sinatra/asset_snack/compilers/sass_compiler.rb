@@ -11,13 +11,8 @@ module Sinatra
 
         def compile(sass_script, file_path = nil)
           config = self.class.configuration
-          if file_path && ext_for(file_path) == 'sass'
-            config.merge!(syntax: :sass)
-          else
-            config.merge!(syntax: :scss)
-          end
-
-          Sass.compile(sass_script, config)
+          syntax = (file_path && ext_for(file_path) == 'sass') ? :sass : :scss
+          Sass.compile sass_script, config.merge(syntax: syntax)
         end
       end
     end # Compilers

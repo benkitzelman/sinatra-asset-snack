@@ -24,9 +24,9 @@ module Sinatra
 
           def compile_file(file_path)
             ext = ext_for file_path
-            return unless ext && handled_extensions.include?(ext.to_sym)
-
             file_content = File.read file_path
+
+            return file_content unless ext && (handled_extensions || []).include?(ext.to_sym)
             new.compile(file_content, file_path)
           end
 
