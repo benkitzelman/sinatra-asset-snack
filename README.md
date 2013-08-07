@@ -60,3 +60,44 @@ See each compiler's repo for the list of configuration options
 [coffee-script](http://github.com/josh/ruby-coffee-script)
 
 [sass](http://sass-lang.com/)
+
+## Precompilation
+
+Create a rake task. Make sure to first require the source file
+containing your Sinatra application
+
+For example, let's say you have a project called "idea" in which you
+have a Sinatra::Base subclass called "Api", something like this:
+
+#### idea/api.rb
+```ruby
+require 'sinatra/asset_snack'
+
+module Idea
+  class Api < Sinatra::Base
+    register Sinatra::AssetSnack
+
+    asset_map '/javascript/application.js', ['scripts/**/*.coffee']
+    asset_map '/stylesheets/application.css', ['styles/**/*.scss']
+  end
+end
+```
+
+You may then set up your rake task to require that file, which will also
+bring Sinatra::AssetSnack into scope, enabling this:
+
+#### Rakefile
+```ruby
+namespace :assets do
+  task :precompile do
+    require 'idea/api' # Require your Sinatra app first
+    print "Compiling assets ... "
+    Sinatra::AssetSnack.precompile! # Now you can precompile
+    puts "Done!"
+  end
+end
+```
+
+At this point you can execute `rake assets:precompile` to write the
+compiled asset files to disk instead of the default dynamic
+generation behavior of AssetSnack.

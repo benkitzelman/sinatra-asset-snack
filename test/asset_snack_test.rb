@@ -39,5 +39,9 @@ module Sinatra
       Sinatra::AssetSnack.assets.must_include js_assets
       Sinatra::AssetSnack.assets.must_include css_assets
     end
+
+    it 'should be able to determine public directory' do
+      Sinatra::AssetSnack.app.public_dir.must_equal App.public_dir
+    end
   end
 end
