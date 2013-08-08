@@ -1,4 +1,5 @@
 require './test/test_helper'
+require 'sinatra/asset_snack/precompile'
 
 module Sinatra::AssetSnack
   describe "Sinatra::AssetSnack.precompile!" do
