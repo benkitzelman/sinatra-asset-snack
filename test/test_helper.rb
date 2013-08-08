@@ -15,3 +15,4 @@ class App < Sinatra::Base
   asset_map '/javascript/application_js_only.js', ['test/fixtures/**/*.js']
   asset_map '/stylesheets/application.css', ['test/fixtures/**/*.scss']
 end
+

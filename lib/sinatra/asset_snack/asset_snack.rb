@@ -1,10 +1,11 @@
 module Sinatra
   module AssetSnack
     class << self
-      attr_reader :compilers, :configuration
+      attr_reader :compilers, :configuration, :app
 
       def registered(app, &block)
         @configuration = Configuration.new
+        @app = app # Used in precompile step
 
         app.extend ClassMethods
         app.send(:include, InstanceMethods)

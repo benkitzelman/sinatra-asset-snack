@@ -60,3 +60,18 @@ See each compiler's repo for the list of configuration options
 [coffee-script](http://github.com/josh/ruby-coffee-script)
 
 [sass](http://sass-lang.com/)
+
+## Precompile
+
+To precompile your assets, you must set a constant `APP_FILE` to the
+source file which defines your Sinatra app.
+
+### Rakefile
+
+```ruby
+APP_FILE = "lib/app/app.rb"
+require 'sinatra/asset_snack/rake'
+```
+
+This defines the rake task `assetsnack:build` which will precompile your
+assets.

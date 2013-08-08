@@ -2,9 +2,13 @@ require 'mime/types'
 require 'sass'
 require 'coffee-script'
 
-here = File.dirname(__FILE__)
+require 'sinatra/asset_snack/compilers/asset_compiler'
 
-require File.join here, 'asset_snack', 'compilers', 'asset_compiler'
+require 'sinatra/asset_snack/version'
+require 'sinatra/asset_snack/helpers'
+require 'sinatra/asset_snack/extensions'
+require 'sinatra/asset_snack/configuration'
+require 'sinatra/asset_snack/asset_snack'
 
-Dir[File.join(here, 'asset_snack', '*.rb')].each { |f| require f }
-Dir[File.join(here, 'asset_snack', 'compilers', '*.rb')].each { |f| require f }
+require 'sinatra/asset_snack/compilers/coffee_script_compiler'
+require 'sinatra/asset_snack/compilers/sass_compiler'
