@@ -75,3 +75,7 @@ require 'sinatra/asset_snack/rake'
 
 This defines the rake task `assetsnack:build` which will precompile your
 assets.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/benkitzelman/sinatra-asset-snack/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
