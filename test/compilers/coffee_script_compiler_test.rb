@@ -10,7 +10,6 @@ module Sinatra
 (function() {
   (function() {
     var x;
-
     return x = "test";
   });
 
